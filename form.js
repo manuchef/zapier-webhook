@@ -109,8 +109,8 @@ $('form[data-endpoint]').each(function (
     const data = convertFormToJSON(form, marketingData, formId);
     const endpoint = form.data('endpoint');
     const redirectURL = form.data('redirect');
-    console.log(`DEBUG data`, data)
-    
+    console.log(`DEBUG data`, data, new Date())
+
     $.ajax({
       url: endpoint,
       method: "POST",
