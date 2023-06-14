@@ -83,7 +83,7 @@ const defaultFormData = (marketingData) => {
   }
 }
 // 	FUNTIONALITY TO SEND DATA TO ENDPOINT
-function convertFormToJSON(form, marketingData) {
+function convertFormToJSON(form, marketingData, formId) {
   const array = $(form).serializeArray();
   const json = {};
   $.each(array, function () {
@@ -91,7 +91,8 @@ function convertFormToJSON(form, marketingData) {
   });
   return {
     ...json,
-    ...(defaultFormData(marketingData))
+    ...(defaultFormData(marketingData)),
+    ...(formId && {formId: formId})
   };
 }
 
@@ -104,7 +105,8 @@ $('form[data-endpoint]').each(function (
     e.preventDefault();
     form = $(e.target);
     const marketingData = getMarketingData();
-    const data = convertFormToJSON(form, marketingData);
+    const formId = form.data('form-id')
+    const data = convertFormToJSON(form, marketingData, formId);
     const endpoint = form.data('endpoint');
     const redirectURL = form.data('redirect');
     console.log(`DEBUG data`, data)
