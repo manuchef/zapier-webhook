@@ -107,28 +107,31 @@ $('form[data-endpoint]').each(function (
     const data = convertFormToJSON(form, marketingData);
     const endpoint = form.data('endpoint');
     const redirectURL = form.data('redirect');
+    console.log(`DEBUG data`, data)
+    console.log(`DEBUG endpoint`, endpoint)
+    console.log(`DEBUG redirectURL`, redirectURL)
     
-    $.ajax({
-      url: endpoint,
-      method: "POST",
-      data: JSON.stringify(data),
-      dataType: "json",
-      success: function () {
-        const parent = $(form.parent());
-        // Hide the form
-        parent.children("form").css("display", "none");
-        parent.find(".success-text").text(parent.find(".w-form-done").data('successMessage'));
-        // Display the "Done" block
-        parent.children(".w-form-done").css("display", "block");
-        // Redirect to thank you page
-        window.location.href = redirectURL;
-      },
-      error: function () {
-        const parent = $(form.parent());
-        parent.find(".error-text").text(parent.find(".w-form-fail").data('errorMessage'));
-        // Display the "Failed" block
-        parent.find(".w-form-fail").css("display", "block");
-      },
-    });
+  //   $.ajax({
+  //     url: endpoint,
+  //     method: "POST",
+  //     data: JSON.stringify(data),
+  //     dataType: "json",
+  //     success: function () {
+  //       const parent = $(form.parent());
+  //       // Hide the form
+  //       parent.children("form").css("display", "none");
+  //       parent.find(".success-text").text(parent.find(".w-form-done").data('successMessage'));
+  //       // Display the "Done" block
+  //       parent.children(".w-form-done").css("display", "block");
+  //       // Redirect to thank you page
+  //       window.location.href = redirectURL;
+  //     },
+  //     error: function () {
+  //       const parent = $(form.parent());
+  //       parent.find(".error-text").text(parent.find(".w-form-fail").data('errorMessage'));
+  //       // Display the "Failed" block
+  //       parent.find(".w-form-fail").css("display", "block");
+  //     },
+  //   });
   });
 });
