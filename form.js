@@ -89,6 +89,12 @@ function convertFormToJSON(form, marketingData, formId) {
   $.each(array, function () {
     json[this.name] = this.value || "";
   });
+  if(json.prefix && json.phone) {
+    json['companyPhone'] = [json.prefix, json.phone].filter(Boolean).join(' ');
+    delete json.prefix;
+    delete json.phone;
+  }
+  console.log('json', json)
   return {
     ...json,
     ...(defaultFormData(marketingData)),
