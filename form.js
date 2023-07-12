@@ -149,7 +149,6 @@
           parent.children(".w-form-done").css("display", "block");
           // Redirect to thank you page
           window.parent.location.href = redirectURL; 
-          console.log('update2',redirectURL)
         },
         error: function () {
           const parent = $(form.parent());
