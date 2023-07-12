@@ -148,6 +148,7 @@
           // Display the "Done" block
           parent.children(".w-form-done").css("display", "block");
           // Redirect to thank you page
+          console.log(redirectURL);
           window.parent.location.href = redirectURL; 
           //Updated
         },
